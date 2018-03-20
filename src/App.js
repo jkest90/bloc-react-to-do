@@ -43,6 +43,16 @@ class App extends Component {
       this.setState({ todos: todos });
    }
 
+   deleteTodo(index) {
+      const todos = this.state.todos.slice();
+      const todo = todos[index];
+      const deletedTodo = todos.filter((item) =>  item !== todo);
+      this.setState({ todos: deletedTodo });
+      // Alternative:
+      // const deletedTodo = this.state.todos.filter((item) => item !== this.state.todos[index]);
+      // this.setState({ todos: deletedTodo })
+   }
+
 /* STEPS:
  1) Within the App component, map through each todo item and render each todo from our child ToDo component.
  2) Each todo item will have a description, an isCompleted checkbox, and an onChange function called toggleComplete.
@@ -58,7 +68,7 @@ class App extends Component {
         <div className="App">
             <ul>
                { this.state.todos.map( (todo, index) =>
-                  <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } />
+                  <ToDo key={ index } description={ todo.description } isCompleted={ todo.isCompleted } toggleComplete={ () => this.toggleComplete(index) } deleteTodo ={ () => this.deleteTodo(index) } />
                )}
             </ul>
             <form onSubmit={ (e) => this.handleSubmit(e) }>
@@ -144,7 +154,7 @@ Step 3: Display the to-dos within this.state using .map(), returning a new array
 - Within handleSubmit(), set value of this.state.newTodoDescription to an empty string when calling setState().
 
 
-FOR MENTOR SESSION: 
+FOR MENTOR SESSION:
 1) Clarify why we must bind 'this' to events.
 2) Clarify Controlled components - specifically with multiple inputs.
 
