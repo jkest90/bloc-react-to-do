@@ -123,7 +123,7 @@ Step 3: Display the to-dos within this.state using .map(), returning a new array
 - Sine we are calling handleChange, we define this as a class method, which accepts e as a parameter.
 - Finally use setState to set the state of newTodoDescription to e.target.value (i.e., the value of the text input).
 - When calling setState, we do not need to pass the entire object, only the oject's property or properties we wish to modify.
-This is because state updates are automatically merged.
+- This is because setState() automatically merges a partial state into the current state, thus we only need to call it with the changed/updated parts.
 - We have successfully bound the value of the text input to this.state.newTodoDescription.
 
 --Step 4--
@@ -142,5 +142,10 @@ This is because state updates are automatically merged.
 
 - Within handleSubmit(), if no input in text field, return.
 - Within handleSubmit(), set value of this.state.newTodoDescription to an empty string when calling setState().
+
+
+FOR MENTOR SESSION: 
+1) Clarify why we must bind 'this' to events.
+2) Clarify Controlled components - specifically with multiple inputs.
 
 */
